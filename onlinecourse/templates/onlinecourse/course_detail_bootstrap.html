@@ -57,18 +57,10 @@
             
 
             <!-- A collapse example here:-->
-            <!--{% for single_lesson in course.lesson_set.all %}
-                {% for question in single_lesson.question_set.all %}
-                    <div>This is the test : Question {{question.question_text}}</div>
-                    <div>This is the test : {{single_lesson.title}}</div>
-                {% endfor %}
-                <div>This is the test : {{single_lesson.title}}</div>
-            {% endfor %}
-            <br></br> -->
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#exam">Start Exam</button>
             <div id ="exam" class="collapse">
     <!--A choice submission form example-->
-                <form id="questionform" action="point to a submit view" method="post">
+                <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                             <!--... for each question in the course ...-->
                     {% for single_lesson in course.lesson_set.all %}
                         {% for question in single_lesson.question_set.all %}
@@ -108,25 +100,7 @@
             <!--<input type="checkbox" name="choice_{{choice.id}}" id="{{choice.id}}">{{choice.choice_content}}</input>-->
             
 
-            <!-- A choice submission form example
-            <form id="questionform" action="point to a submit view" method="post">
-                        ... for each question in the course ...
-                        <div class="card mt-1">
-                            <div class="card-header"><h5>{{ question.question_text}}</h5></div>
-                            {% csrf_token %}
-                            <div class="form-group">
-                               ... for each choice in the question ...
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" name="choice_{{choice.id}}"
-                                               class="form-check-input" id="{{choice.id}}"
-                                               value="{{choice.id}}">{{ choice.choice_text }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    <input class="btn btn-success btn-block" type="submit" value="Submit">
-            </form> -->
+            <!-- A choice submission form example-->
 
             <!--Check here to see more details Bootstrap checkbox
              https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
